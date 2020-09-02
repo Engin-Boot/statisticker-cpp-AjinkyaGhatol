@@ -8,15 +8,15 @@ template <typename T> struct Stats
 
 }; 
 namespace   Statistics {
-    template<typename T> T ComputAverage(Stats<T>&,const std::vector<T>& );
+    template<typename T> T ComputAverage(const std::vector<T>& );
  
-    template<typename T> T ComputMax(Stats<T>& ,const std::vector<T>&);
+    template<typename T> T ComputMax(const std::vector<T>&);
   
-    template<typename T> T ComputMin(Stats<T>& ,const std::vector<T>&);
+    template<typename T> T ComputMin(const std::vector<T>&);
    
     template <typename T> Stats<T> ComputeStatistics(const std::vector<T>&);
 }
-template<typename T> T Statistics:: ComputAverage(Stats<T>& stat,const std::vector<T>& data)
+template<typename T> T Statistics:: ComputAverage(const std::vector<T>& data)
     {
         T sum=0;
         int size=data.size();
@@ -26,11 +26,11 @@ template<typename T> T Statistics:: ComputAverage(Stats<T>& stat,const std::vect
         }
         return sum/size;
     }
-    template<typename T> T Statistics:: ComputMax(Stats<T>& stat,const std::vector<T>& data)
+    template<typename T> T Statistics:: ComputMax(const std::vector<T>& data)
     {
         return *max_element(data.begin(), data.end()); 
     }
-    template<typename T> T Statistics::ComputMin(Stats<T>& stat,const std::vector<T>& data)
+    template<typename T> T Statistics::ComputMin(const std::vector<T>& data)
     {
         return *min_element(data.begin(), data.end()); 
     }
@@ -45,9 +45,9 @@ template<typename T> T Statistics:: ComputAverage(Stats<T>& stat,const std::vect
         }
         else
         {
-            ans.average= ComputAverage(ans,data);
-            ans.max= ComputMax(ans,data);
-            ans.min= ComputMin(ans,data);
+            ans.average= ComputAverage(data);
+            ans.max= ComputMax(data);
+            ans.min= ComputMin(data);
         }
         return ans;
     }
