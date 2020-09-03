@@ -4,11 +4,9 @@
 TEST_CASE("reports average, minimum and maximum of int with average is whole number") {
     std::vector<int> vect{ 1, 8, 3, 4 };
     auto computedStats = Statistics::ComputeStatistics(vect);
-    
-    std::cout << computedStats.average << std::endl;
-    REQUIRE(computedStats.average==4);
-    REQUIRE(computedStats.max==8);
-    REQUIRE(computedStats.min==1);
+    REQUIRE(computedStats.average == 4);
+    REQUIRE(computedStats.max == 8);
+    REQUIRE(computedStats.min == 1);
 }
 TEST_CASE("reports average, minimum and maximum of int with average is fraction") {
     std::vector<int> vect{ 1, 9, 3, 4 };
@@ -27,7 +25,7 @@ TEST_CASE("reports average, minimum and maximum of float") {
     REQUIRE(std::abs(computedStats.min - 1.5) < epsilon);
 }
 TEST_CASE("reports average, minimum and maximum of double") {
-    std::vector<double> vect{1.5, 8.9, 3.2, 4.5};
+    std::vector<double> vect{ 1.5, 8.9, 3.2, 4.5 };
     auto computedStats = Statistics::ComputeStatistics(vect);
     double epsilon = 0.001;
     REQUIRE(std::abs(computedStats.average - 4.525) < epsilon);
@@ -35,11 +33,11 @@ TEST_CASE("reports average, minimum and maximum of double") {
     REQUIRE(std::abs(computedStats.min - 1.5) < epsilon);
 }
 TEST_CASE("average is NaN for empty array") {
-   std::vector<float> vect{};
+    std::vector<float> vect{};
     auto computedStats = Statistics::ComputeStatistics(vect);
     //All fields of computedStats (average, max, min) must be
     //NAN (not-a-number), as defined in math.h
-    
+
     //Design the REQUIRE statement here.
     //Use http://www.cplusplus.com/reference/cmath/isnan/
     REQUIRE(isnan(computedStats.average));

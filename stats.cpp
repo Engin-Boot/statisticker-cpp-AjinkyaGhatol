@@ -1,4 +1,4 @@
-#include"stats.h"
+/*#include"stats.h"
 #include<limits>
 template<typename T> double Statistics::ComputAverage(const std::vector<T>& data)
 {
@@ -35,3 +35,4 @@ template <typename T> Statistics::Stats<T> Statistics::ComputeStatistics(const s
     }
     return ans;
 }
+*/
