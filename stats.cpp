@@ -1,4 +1,5 @@
 #include"stats.h"
+#include<limits>
 template<typename T> double Statistics::ComputAverage(const std::vector<T>& data)
 {
     double sum = 0;
