@@ -1,37 +1,36 @@
-/*#include "stats.h"
- template<typename T> T Statistics:: ComputAverage(Stats<T>& stat,const std::vector<T>& data)
+#include"stats.h"
+template<typename T> double Statistics::ComputAverage(const std::vector<T>& data)
+{
+    double sum = 0;
+    int size = data.size();
+    for (int i = 0; i < size; i++)
     {
-        T sum=0;
-        int size=data.size();
-        for(int i=0;i<size;i++)
-        {
-            sum+=data[i];
-        }
-        return sum/size;
+        sum += data[i];
     }
-    template<typename T> T Statistics:: ComputMax(Stats<T>& stat,const std::vector<T>& data)
+    return sum / size;
+}
+template<typename T> T Statistics::ComputMax(const std::vector<T>& data)
+{
+    return *max_element(data.begin(), data.end());
+}
+template<typename T> T Statistics::ComputMin(const std::vector<T>& data)
+{
+    return *min_element(data.begin(), data.end());
+}
+template <typename T> Statistics::Stats<T> Statistics::ComputeStatistics(const std::vector<T>& data)
+{
+    Stats<T> ans;
+    if (data.size() == 0)
     {
-        return *max_element(data.begin(), data.end()); 
+        ans.average = std::numeric_limits<T>::quiet_NaN();
+        ans.max = std::numeric_limits<T>::quiet_NaN();
+        ans.min = std::numeric_limits<T>::quiet_NaN();
     }
-    template<typename T> T Statistics::ComputMin(Stats<T>& stat,const std::vector<T>& data)
+    else
     {
-        return *min_element(data.begin(), data.end()); 
+        ans.average = ComputAverage(data);
+        ans.max = ComputMax(data);
+        ans.min = ComputMin(data);
     }
-    template <typename T> Stats<T> Statistics:: ComputeStatistics(const std::vector<T>& data)
-    {
-        Stats<T> ans;
-        if(data.size()==0)
-        {
-            ans.average=NAN;
-            ans.max=NAN;
-            ans.min=NAN;
-        }
-        else
-        {
-            ans.average= ComputAverage(ans,data);
-            ans.max= ComputMax(ans,data);
-            ans.min= ComputMin(ans,data);
-        }
-        return ans;
-    }
-*/
+    return ans;
+}
